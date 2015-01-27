@@ -1,0 +1,19 @@
+oauth2-code-proxy is a Google App Engine service that proxies the OAuth 2.0
+access token request, adding the required the client authentication to the
+request.
+
+The motivation is to be able to use a service that does not support the
+implicit grant request in a mobile application without including the client
+secret in the mobile application.
+
+This, of course, does not solve the problem of being hijacked.  Instead of
+stealing the client secret to gain access tokens, the hijacker could just
+use this proxy.  (The authorization page should say which application is
+being authorized, so a hijacker that doesn't even try to impersonate the
+real application will look fishy.)
+
+Another concern is that the access tokens will be seen by the proxy, rather
+than being sent directly to the mobile application.  (Of course, the
+application could also then send the access token to some server.)  This
+proxy, insofar as possible on Google App Engine, does not log or record the
+access tokens.

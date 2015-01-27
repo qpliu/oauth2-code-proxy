@@ -1,0 +1,8 @@
+application: oauth2-code-proxy
+version: 1
+runtime: go
+api_version: go1
+
+handlers:
+  - url: /.*
+    script: _go_app
